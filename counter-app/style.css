@@ -98,11 +98,6 @@
       transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
     }
 
-    .btn:hover {
-      border-color: rgba(255, 255, 255, 0.9);
-      background: rgba(255, 255, 255, 0.1);
-    }
-
     .btn:active {
       transform: scale(0.95);
     }
@@ -113,3 +108,125 @@
       stroke: rgba(255, 255, 255, 0.85);
       stroke-width: 1.5;
     }
+
+
+/* popup style */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f0f0; /* Replace with your background image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Background Blur Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Card */
+.modal-card {
+    background: rgba(255, 255, 255, 0.95);
+    width: 320px;
+    border-radius: 40px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.warning-icon {
+    color: #ff3b30;
+    font-size: 20px;
+}
+
+/* Image Section */
+.profile-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #eee;
+    box-shadow: 0 8px 20px rgba(255, 59, 48, 0.2); /* Soft red glow */
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Body Text */
+.modal-body p {
+    font-size: 20px;
+    color: #1c1c1e;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px 0;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #333;
+    border: 1px solid #d1d1d6;
+}
+
+.btn-primary {
+    background-color: #eb5545;
+    color: #333333;
+    font-weight: 600;
+}
