@@ -13,13 +13,9 @@ function updateCounterUI(){
         count = str;
         str.padStart("4", "0");
         counter.innerHTML = str.padStart("4", "0");
-        console.log("if");
-        console.log("count", count);
     }else{
         counter.innerHTML = "0000";
         count = 0;
-        console.log("else");
-        console.log("count", count);
     }
 }
 
@@ -44,32 +40,41 @@ decrement_btn.addEventListener("click", ()=>{
 
 resetBtn.addEventListener("click", ()=>{
     modalPopup.style.display = "flex";
+});
 
+document.addEventListener("click", (e)=>{
     if(modalPopup.getBoundingClientRect().height){
-        document.addEventListener("click", (e)=>{
-            console.log(e.target.className);
-            if(e.target.className !== "modal-card"){
-                console.log("clicked")
-            }
-        })
+        if(e.target.className == "modal-overlay"){
+            modalPopup.style.display = "none";
+        }
     }
 });
+
+
+document.addEventListener("keydown", (e)=>{
+    if(modalPopup.getBoundingClientRect().height){
+        if(e.keyCode == "27"){
+            console.log("user clicked excape");
+            modalPopup.style.display = "none";
+        }
+    }
+});
+
+
 popupProceedBtn.addEventListener("click", ()=>{
     sessionStorage.removeItem("count_increment");
     counter.innerHTML = "0000";
     updateCounterUI();
     modalPopup.style.display = "none";
 });
+
 popupCancelBtn.addEventListener("click", ()=>{
     modalPopup.style.display = "none";
 });
 
-
-
 document.addEventListener("DOMContentLoaded", ()=>{
     updateCounterUI();
 })
-
 
 
 /*
