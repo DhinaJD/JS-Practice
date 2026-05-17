@@ -11,7 +11,6 @@ function updateCounterUI(){
    if(sessionStorage.getItem("count_increment")){
         let str = String(sessionStorage.getItem("count_increment"));
         count = str;
-        str.padStart("4", "0");
         counter.innerHTML = str.padStart("4", "0");
     }else{
         counter.innerHTML = "0000";
@@ -50,7 +49,6 @@ document.addEventListener("click", (e)=>{
     }
 });
 
-
 document.addEventListener("keydown", (e)=>{
     if(modalPopup.getBoundingClientRect().height){
         if(e.keyCode == "27"){
@@ -59,7 +57,6 @@ document.addEventListener("keydown", (e)=>{
         }
     }
 });
-
 
 popupProceedBtn.addEventListener("click", ()=>{
     sessionStorage.removeItem("count_increment");
@@ -74,12 +71,16 @@ popupCancelBtn.addEventListener("click", ()=>{
 
 document.addEventListener("DOMContentLoaded", ()=>{
     updateCounterUI();
-})
+});
 
 
 /*
 let dhina = "5";
 dhina.padStart("4", "0");
+keypress - deprecared
+use keydown - for all keys(esc, tab, shift)
+
+getBoudningClientRect() - elemeent width and heihgt get
 => 0005
 
 session.clear() -> remove everythings use sesstion.removeitem
