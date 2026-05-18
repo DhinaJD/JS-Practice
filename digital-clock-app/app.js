@@ -11,17 +11,28 @@ const clock = document.getElementById("clock");
 const dateText = document.getElementById("date");
 const btn = document.querySelectorAll(".switch-btn");
 
-function timeUpdate(){
+function normalTimer(){
     const currentDate = new Date();
-    let currentTime = `${currentDate.getHours()}: ${currentDate.getMinutes()}: ${currentDate.getSeconds()}`
+    const h = (currentDate.getHours() % 12) < 10 ? `0${currentDate.getHours() % 12}` : currentDate.getHours() % 12 ;
+    const m = currentDate.getMinutes() < 10 ? `0${currentDate.getMinutes()}`: currentDate.getMinutes();
+    const s = currentDate.getSeconds() < 10 ? `0${currentDate.getSeconds()}` : currentDate.getSeconds();
+    let currentTime = `${h}:${m}:${s}`;
+    clock.textContent = currentTime;
+}
 
+function railwayTimer(){
+    const currentDate = new Date();
+    let h = currentDate.getHours() > 10 ? currentDate.getHours() : `0${currentDate.getHours()}`;
+    let m = currentDate.getMinutes() > 10 ? currentDate.getMinutes() : `0${currentDate.getMinutes()}`;
+    let s = currentDate.getSeconds() > 10 ? currentDate.getSeconds() : `0${currentDate.getSeconds()}`;
+    let currentTime = `${h}:${m}:${s}`;
     dateText.textContent = currentDate.toDateString();
     clock.textContent = currentTime;
 }
 
-setInterval(() => {
-    timeUpdate();
-}, 1000);
+// setInterval(() => {
+//     railwayTimer();
+// }, 1000);
 
 btn.forEach((element) =>{
     element.addEventListener("click", ()=>{
@@ -30,6 +41,17 @@ btn.forEach((element) =>{
         });
 
         element.classList.add("active");
+
+        if(element.innerHTML == "12h"){
+            setInterval(() => {
+                normalTimer();
+            }, 1000);
+        }else{
+            setInterval(() => {
+                railwayTimer();
+            }, 1000);
+        }
+        
 
         //clicking same active button
         // if(element.classList.contains("active")){
