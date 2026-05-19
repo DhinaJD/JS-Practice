@@ -30,12 +30,19 @@ function railwayTimer(){
     clock.textContent = currentTime;
 }
 
-// setInterval(() => {
-//     railwayTimer();
-// }, 1000);
+
+let timerInit = setInterval(() => {
+    railwayTimer();
+}, 1000);
+
+let normalTimerInit = setInterval(() => {
+    normalTimer();
+}, 1000);
+
 
 btn.forEach((element) =>{
     element.addEventListener("click", ()=>{
+        clearInterval(railwayTimer);
         btn.forEach(item => {
             item.classList.remove("active");
         });
@@ -43,13 +50,9 @@ btn.forEach((element) =>{
         element.classList.add("active");
 
         if(element.innerHTML == "12h"){
-            setInterval(() => {
-                normalTimer();
-            }, 1000);
+            clearInterval(timerInit);
         }else{
-            setInterval(() => {
-                railwayTimer();
-            }, 1000);
+           clearInterval(normalTimerInit);
         }
         
 
