@@ -30,10 +30,15 @@ function railwayTimer(){
     clock.textContent = currentTime;
 }
 
-railwayTimer();
+
+let onloadTimer = setInterval(()=>{
+    railwayTimer();
+}, 1000);
 
 btn.forEach((element) =>{
     element.addEventListener("click", ()=>{
+
+        clearInterval(onloadTimer);
 
         btn.forEach(item => {
             item.classList.remove("active");
@@ -41,7 +46,7 @@ btn.forEach((element) =>{
 
         element.classList.add("active");
 
-        let timerInit = setInterval(() => {
+        let railwayTimerInit = setInterval(() => {
             railwayTimer();
         }, 1000);
 
@@ -50,8 +55,10 @@ btn.forEach((element) =>{
         }, 1000);
 
         if(element.innerHTML == "12h"){
-            clearInterval(normalTimerInit);
+            console.log("12")
+            clearInterval(railwayTimerInit);
         }else{
+            console.log("24")
            clearInterval(normalTimerInit);
         }
 
