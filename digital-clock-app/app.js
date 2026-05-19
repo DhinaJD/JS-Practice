@@ -10,6 +10,8 @@ let year = day * 365 = 1Year
 const clock = document.getElementById("clock");
 const dateText = document.getElementById("date");
 const btn = document.querySelectorAll(".switch-btn");
+const defaultTimerBtn = document.getElementById("defaultTimer-btn");
+const railwayTimerBtn = document.getElementById("railwaytimer-btn");
 
 function normalTimer(){
     const currentDate = new Date();
@@ -35,6 +37,22 @@ let onloadTimer = setInterval(()=>{
     railwayTimer();
 }, 1000);
 
+
+defaultTimerBtn.addEventListener("click", ()=>{
+    let normalTimerInit = setInterval(() => {
+        normalTimer();
+    }, 1000);
+});
+
+railwayTimerBtn.addEventListener("click", ()=>{
+    clearInterval(normalTimerInit);
+    let railwayTimerInit = setInterval(() => {
+        railwayTimer();
+    }, 1000);
+});
+
+
+
 btn.forEach((element) =>{
     element.addEventListener("click", ()=>{
 
@@ -46,21 +64,23 @@ btn.forEach((element) =>{
 
         element.classList.add("active");
 
-        let railwayTimerInit = setInterval(() => {
-            railwayTimer();
-        }, 1000);
+        // tried setintevel methord inside loop but not working
 
-        let normalTimerInit = setInterval(() => {
-            normalTimer();
-        }, 1000);
+        // let railwayTimerInit = setInterval(() => {
+        //     railwayTimer();
+        // }, 1000);
 
-        if(element.innerHTML == "12h"){
-            console.log("12")
-            clearInterval(railwayTimerInit);
-        }else{
-            console.log("24")
-           clearInterval(normalTimerInit);
-        }
+        // let normalTimerInit = setInterval(() => {
+        //     normalTimer();
+        // }, 1000);
+
+        // if(element.innerHTML == "12h"){
+        //     console.log("12")
+        //     clearInterval(railwayTimerInit);
+        // }else{
+        //     console.log("24")
+        //    clearInterval(normalTimerInit);
+        // }
 
         //clicking same active button
         // if(element.classList.contains("active")){
