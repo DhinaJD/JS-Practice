@@ -30,31 +30,30 @@ function railwayTimer(){
     clock.textContent = currentTime;
 }
 
-
-let timerInit = setInterval(() => {
-    railwayTimer();
-}, 1000);
-
-let normalTimerInit = setInterval(() => {
-    normalTimer();
-}, 1000);
-
+railwayTimer();
 
 btn.forEach((element) =>{
     element.addEventListener("click", ()=>{
-        clearInterval(railwayTimer);
+
         btn.forEach(item => {
             item.classList.remove("active");
         });
 
         element.classList.add("active");
 
+        let timerInit = setInterval(() => {
+            railwayTimer();
+        }, 1000);
+
+        let normalTimerInit = setInterval(() => {
+            normalTimer();
+        }, 1000);
+
         if(element.innerHTML == "12h"){
-            clearInterval(timerInit);
+            clearInterval(normalTimerInit);
         }else{
            clearInterval(normalTimerInit);
         }
-        
 
         //clicking same active button
         // if(element.classList.contains("active")){
