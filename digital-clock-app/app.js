@@ -12,51 +12,50 @@ const dateText = document.getElementById("date");
 const btn = document.querySelectorAll(".switch-btn");
 const defaultTimerBtn = document.getElementById("defaultTimer-btn");
 const railwayTimerBtn = document.getElementById("railwaytimer-btn");
+let onloadTimer;
+let normalTimerInit;
 
-function normalTimer(){
-    const currentDate = new Date();
-    const h = (currentDate.getHours() % 12) < 10 ? `0${currentDate.getHours() % 12}` : currentDate.getHours() % 12 ;
-    const m = currentDate.getMinutes() < 10 ? `0${currentDate.getMinutes()}`: currentDate.getMinutes();
-    const s = currentDate.getSeconds() < 10 ? `0${currentDate.getSeconds()}` : currentDate.getSeconds();
-    let currentTime = `${h}:${m}:${s}`;
-    clock.textContent = currentTime;
+
+let normalTimer = function(){
+    normalTimerInit = setInterval(()=>{
+        console.log("12hr clock Running");
+        const currentDate = new Date();
+        const h = (currentDate.getHours() % 12) < 10 ? `0${currentDate.getHours() % 12}` : currentDate.getHours() % 12 ;
+        const m = currentDate.getMinutes() < 10 ? `0${currentDate.getMinutes()}`: currentDate.getMinutes();
+        const s = currentDate.getSeconds() < 10 ? `0${currentDate.getSeconds()}` : currentDate.getSeconds();
+        let currentTime = `${h}:${m}:${s}`;
+        clock.textContent = currentTime;
+    }, 1000)
 }
 
-function railwayTimer(){
-    const currentDate = new Date();
-    let h = currentDate.getHours() > 10 ? currentDate.getHours() : `0${currentDate.getHours()}`;
-    let m = currentDate.getMinutes() > 10 ? currentDate.getMinutes() : `0${currentDate.getMinutes()}`;
-    let s = currentDate.getSeconds() > 10 ? currentDate.getSeconds() : `0${currentDate.getSeconds()}`;
-    let currentTime = `${h}:${m}:${s}`;
-    dateText.textContent = currentDate.toDateString();
-    clock.textContent = currentTime;
+let railwayTimer = function(){
+    onloadTimer = setInterval(()=>{
+        console.log("24hr clock Running");
+        const currentDate = new Date();
+        let h = currentDate.getHours() > 10 ? currentDate.getHours() : `0${currentDate.getHours()}`;
+        let m = currentDate.getMinutes() > 10 ? currentDate.getMinutes() : `0${currentDate.getMinutes()}`;
+        let s = currentDate.getSeconds() > 10 ? currentDate.getSeconds() : `0${currentDate.getSeconds()}`;
+        let currentTime = `${h}:${m}:${s}`;
+        dateText.textContent = currentDate.toDateString();
+        clock.textContent = currentTime;
+    }, 1000)
 }
 
-
-let onloadTimer = setInterval(()=>{
-    railwayTimer();
-}, 1000);
-
+//on load clock ticking
+railwayTimer();
 
 defaultTimerBtn.addEventListener("click", ()=>{
-    let normalTimerInit = setInterval(() => {
-        normalTimer();
-    }, 1000);
+    clearInterval(onloadTimer);
+    normalTimer();
 });
 
 railwayTimerBtn.addEventListener("click", ()=>{
     clearInterval(normalTimerInit);
-    let railwayTimerInit = setInterval(() => {
-        railwayTimer();
-    }, 1000);
+    railwayTimer();
 });
-
-
 
 btn.forEach((element) =>{
     element.addEventListener("click", ()=>{
-
-        clearInterval(onloadTimer);
 
         btn.forEach(item => {
             item.classList.remove("active");
