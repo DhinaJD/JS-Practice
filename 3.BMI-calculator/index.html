@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="input-section">
+      <div class="form-group">
+        <label class="form-label">Gender</label>
+        <div class="gender-container">
+          <button type="button" class="gender-btn active">Male</button>
+          <button type="button" class="gender-btn">Female</button>
+          <button type="button" class="gender-btn">Transgender</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-wrapper">
+          <span class="label-inside">Height</span>
+          <input type="number" value="177" placeholder="0">
+          <div class="unit-select-wrapper">
+            <select>
+              <option value="cm">Centimeters</option>
+              <option value="inches">Inches</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-wrapper">
+          <span class="label-inside">Age</span>
+          <input type="number" value="26" placeholder="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-wrapper">
+          <span class="label-inside">Weight</span>
+          <input type="number" value="84" placeholder="0">
+        </div>
+      </div>
+    </div>
+
+    <div class="result-section">
+      <h1 class="result-title">BMI Result</h1>
+
+      <div class="dashboard-row">
+        <div class="gauge-container">
+          <div class="gauge"></div>
+          <div class="gauge-needle"></div>
+          <div class="gauge-center-pin"></div>
+        </div>
+
+        <div class="score-card">
+          <div class="lbl">Your BMI</div>
+          <div class="val">26.81</div>
+        </div>
+      </div>
+
+      <div class="legend-container">
+        <div class="legend-item">
+          <span class="legend-color-dot" style="background-color: var(--color-underweight);"></span>
+          Under Weight
+        </div>
+        <div class="legend-item">
+          <span class="legend-color-dot" style="background-color: var(--color-normal);"></span>
+          Normal
+        </div>
+        <div class="legend-item">
+          <span class="legend-color-dot" style="background-color: var(--color-overweight);"></span>
+          Over Weight
+        </div>
+        <div class="legend-item">
+          <span class="legend-color-dot" style="background-color: var(--color-obesity);"></span>
+          Obesity
+        </div>
+      </div>
+
+      <div class="metrics-summary-box">
+        <div class="summary-item">
+          <span class="summary-label">Healthy BMI range</span>
+          <span class="summary-value">18.5 - 24.9</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Healthy weight for this height</span>
+          <span class="summary-value">58 - 78 Kg</span>
+        </div>
+        <div class="action-row">
+          <span class="action-label">Action</span>
+          <span class="action-value">Lose 6 Kg</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
