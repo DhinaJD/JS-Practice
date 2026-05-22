@@ -24,6 +24,7 @@
         <div class="input-wrapper">
           <span class="label-inside">Height</span>
           <input type="number" id="input-height" name="bmi-input" value="177" placeholder="0">
+          <span class="input-error"></span>
           <div class="unit-select-wrapper">
             <select>
               <option value="cm">Centimeters</option>
@@ -37,6 +38,7 @@
         <div class="input-wrapper">
           <span class="label-inside">Age</span>
           <input type="number" id="input-age" name="bmi-input" value="26" placeholder="0">
+          <span class="input-error"></span>
         </div>
       </div>
 
@@ -44,6 +46,7 @@
         <div class="input-wrapper">
           <span class="label-inside">Weight</span>
           <input type="number" id="input-weight" name="bmi-input" value="84" placeholder="0">
+          <span class="input-error"></span>
         </div>
       </div>
     </div>
@@ -60,7 +63,7 @@
 
         <div class="score-card">
           <div class="lbl">Your BMI</div>
-          <div class="val">26.81</div>
+          <div class="val" id="bmi-result">26.81</div>
         </div>
       </div>
 
