@@ -24,8 +24,8 @@ bmiInputGroup.forEach(element => {
         if(userWeight.value && userAge.value && userHeight.value){
             //Convert Height cm to meter
             let newHeight = userHeight.value/100;
-            let newWeight = userWeight.value = userWeight.value.toFixed(2);
-            console.log(newHeight.toFixed(2));
+            let newWeight = Number(userWeight.value.toFixed(2))
+            console.log(newHeight);
 
             let result = (newWeight * Math.pow(newHeight.toFixed(2) , 2));
             bmiResult.textContent = result;
