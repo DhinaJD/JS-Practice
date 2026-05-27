@@ -18,13 +18,11 @@ bmiInputGroup.forEach(element => {
         // }
         
         if(userWeight.value > 200){
-            let errorMsg = document.createElement("span");
-            errorMsg.classList.add("error-msg");
-            errorMsg.style.color - "red";
-            errorMsg.textContent = "Weight should not be more than 200 kgs"
-            userWeight.append(errorMsg);
-            console.log(errorMsg);
-            
+            console.log(element.closest(".input-error"));
+            // let errorMsg = element.closest(".input-error");
+            // errorMsg.style.color = "red";
+            // errorMsg.textContent = "Weight should not be more than 200 kgs"
+            // console.log(errorMsg);
         }
 
 
