@@ -5,6 +5,15 @@ const userAge = document.getElementById("input-age");
 const userWeight = document.getElementById("input-weight");
 const bmiResult = document.getElementById("bmi-result");
 
+function errorMessage(elem, message){
+    let errorMsg = document.createElement("span");
+    errorMsg.classList.add("error-msg");
+    errorMsg.style.color = "red";
+    errorMsg.textContent = message;
+    console.log(errorMsg);
+    elem.nextElementSibling(errorMsg);
+}
+
 
 bmiInputGroup.forEach(element => {
    element.addEventListener("input", (e)=>{
@@ -18,7 +27,7 @@ bmiInputGroup.forEach(element => {
         // }
         
         if(userWeight.value > 200){
-            console.log(element.closest(".input-error"));
+            errorMessage(element, "Weight should not be more than 200 kgs");
             // let errorMsg = element.closest(".input-error");
             // errorMsg.style.color = "red";
             // errorMsg.textContent = "Weight should not be more than 200 kgs"
@@ -34,7 +43,7 @@ bmiInputGroup.forEach(element => {
             let newHeight = userHeight.value/100;
             let newWeight = userWeight.value;
             let result = newWeight / Math.pow(newHeight , 2);
-            bmiResult.textContent = result.toFixed(2);
+            bmiResult.textContent = (result % 100).toFixed(2);
         }
    });
 });
